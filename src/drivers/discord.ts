@@ -24,7 +24,7 @@ import { Oauth2Driver } from '../abstract_drivers/oauth2.js'
  */
 export class DiscordDriver extends Oauth2Driver<DiscordToken, DiscordScopes> {
   protected accessTokenUrl = 'https://discord.com/api/oauth2/token'
-  protected authorizeUrl = 'https://discord.com/api/oauth2/authorize'
+  protected authorizeUrl = 'https://discord.com/oauth2/authorize'
   protected userInfoUrl = 'https://discord.com/api/users/@me'
 
   /**
@@ -82,6 +82,7 @@ export class DiscordDriver extends Oauth2Driver<DiscordToken, DiscordScopes> {
 
     request.param('response_type', 'code')
     request.param('grant_type', 'authorization_code')
+    request.param('integration_type', 1)
 
     /**
      * Define params based upon user config
